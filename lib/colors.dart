@@ -14,3 +14,5 @@ var pageHeadingColor = Colors.green.shade500;
 var scaffoldBgColor = Colors.white;
 
 var appBarIconColor = Colors.black;
+var avatarBgColor = Colors.black.withOpacity(0.05);
+var iconNeutralColor = Colors.black.withOpacity(0.3);

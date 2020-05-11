@@ -19,19 +19,25 @@ class VerifyNumberScreen extends StatelessWidget {
           ),
         ),
         actions: <Widget>[
-          IconButton(
-            icon: Icon(Icons.more_vert, color: appBarIconColor),
-            onPressed: () {
-              //TODO implement on press
+          PopupMenuButton(
+            child: Icon(Icons.more_vert, color: appBarIconColor),
+            itemBuilder: (BuildContext context) {
+              return ['Help', 'About']
+                  .map((item) => PopupMenuItem(
+                        value: item,
+                        child: Text(item),
+                        enabled: false,
+                      ))
+                  .toList();
             },
-          )
+          ),
         ],
       ),
       body: Column(
         children: <Widget>[
           SizedBox(height: 10),
           Text(we_have_sent_sms_text),
-          Text(wrong_number_text,style: TextStyle(color: alternateTextColor)),
+          Text(wrong_number_text, style: TextStyle(color: alternateTextColor)),
           SizedBox(height: 6),
           SizedBox(
             width: 150,
@@ -48,13 +54,12 @@ class VerifyNumberScreen extends StatelessWidget {
               ),
             ),
           ),
-
           Padding(
-            padding: const EdgeInsets.only(top:16),
+            padding: const EdgeInsets.only(top: 16),
             child: Text(enter_six_digit_code_text),
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 40.0,top: 20),
+            padding: const EdgeInsets.only(left: 40.0, top: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
