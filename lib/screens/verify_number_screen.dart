@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:whatsapp/screens/home_screen.dart';
+import 'package:whatsapp/screens/profile_screen.dart';
 import 'package:whatsapp/strings.dart';
 import 'package:whatsapp/colors.dart';
 
@@ -26,7 +28,7 @@ class VerifyNumberScreen extends StatelessWidget {
                   .map((item) => PopupMenuItem(
                         value: item,
                         child: Text(item),
-                        enabled: false,
+                        enabled: true,
                       ))
                   .toList();
             },
@@ -84,6 +86,14 @@ class VerifyNumberScreen extends StatelessWidget {
               ],
             ),
           ),
+          SizedBox(height: 20),
+          Center(
+            child: RaisedButton(
+              child: Text('NEXT'),
+              onPressed: () =>
+                  Navigator.of(context).pushNamed(ProfileScreen.id),
+            ),
+          )
         ],
       ),
     );

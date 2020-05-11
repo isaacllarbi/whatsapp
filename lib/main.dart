@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp/screens/home_screen.dart';
 import 'package:whatsapp/screens/phone_number_screen.dart';
 import 'package:whatsapp/screens/profile_screen.dart';
 import 'package:whatsapp/screens/verify_number_screen.dart';
@@ -17,12 +18,13 @@ class MyApp extends StatelessWidget {
         // iconTheme: IconThemeData(color: Colors.)
       ),
       // home: VerifyNumberScreen(),
-      initialRoute: ProfileScreen.id,
+      initialRoute: HomeScreen.id,
       routes: {
+        WelcomeScreen.id: (context) => WelcomeScreen(),
         VerifyNumberScreen.id: (context) => VerifyNumberScreen(),
         PhoneNumberScreen.id: (context) => PhoneNumberScreen(),
-        WelcomeScreen.id: (context) => WelcomeScreen(),
         ProfileScreen.id: (context) => ProfileScreen(),
+        HomeScreen.id: (context) => HomeScreen(),
       },
     );
   }

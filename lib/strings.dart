@@ -32,3 +32,13 @@ const String profile_info_text = "Profile Info";
 const String please_provide_your_name_text = "Please provide your name and an optional profile photo";
 const String type_your_name_here_text = "Type your name here";
 
+//home_screen.dart
+const String chats_text='CHATS';
+const String status_text='STATUS';
+const String calls_text='CALLS';
+const String message_a_number_text='Message a number';
+const String new_group_text='New group';
+const String new_broadcast_text='New broadcast';
+const String whatsapp_web_text='WhatsApp Web';
+const String settings_text='Settings';
+const String exit_text='Exit';

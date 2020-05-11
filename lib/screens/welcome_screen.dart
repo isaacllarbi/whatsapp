@@ -42,7 +42,8 @@ class WelcomeScreen extends StatelessWidget {
                         color: btnTextColor, fontWeight: FontWeight.bold),
                   ),
                   onPressed: () {
-                    Navigator.of(context).pushNamed(PhoneNumberScreen.id);
+                    Navigator.of(context).
+                        pushNamed(PhoneNumberScreen.id);
                   },
                 ),
               ),

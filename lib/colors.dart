@@ -4,6 +4,7 @@ var btnBgColor  = Colors.green.shade400;
 var btnTextColor  = Colors.white;
 var btnTextPimaryColor= Colors.green.shade400;
 var appBarTitleColor  = Colors.green.shade500;
+var primaryColorDark = Colors.green.shade900;
 
 var normalTextColor = Colors.black.withOpacity(0.9);
 var faintTextColor = Colors.black.withOpacity(0.6);
