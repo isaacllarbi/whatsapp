@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:whatsapp/screens/home_screens/chats_screen.dart';
+import 'package:whatsapp/screens/home_screens/status_screen.dart';
 import 'package:whatsapp/screens/welcome_screen.dart';
 import 'package:whatsapp/strings.dart';
 import 'package:whatsapp/colors.dart';
@@ -72,10 +74,10 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         body: TabBarView(children: <Widget>[
-          Column(children: <Widget>[Text('Camera')]),
-          Column(children: <Widget>[Text('Chats')]),
-          Column(children: <Widget>[Text('Status')]),
-          Column(children: <Widget>[Text('Calls')]),
+          Text('Camera'),
+          ChatScreen(),
+          StatusScreen(), 
+          Text('Calls'),
         ]),
       ),
     );

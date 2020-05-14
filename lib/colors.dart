@@ -17,3 +17,4 @@ var scaffoldBgColor = Colors.white;
 var appBarIconColor = Colors.black;
 var avatarBgColor = Colors.black.withOpacity(0.05);
 var iconNeutralColor = Colors.black.withOpacity(0.3);
+var iconWhiteColor = Colors.white;

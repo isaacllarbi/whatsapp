@@ -41,4 +41,9 @@ const String new_group_text='New group';
 const String new_broadcast_text='New broadcast';
 const String whatsapp_web_text='WhatsApp Web';
 const String settings_text='Settings';
+const String settings_text_caps='SETTINGS';
 const String exit_text='Exit';
+
+//chats_screen.dart
+const String to_help_you_message_friends='To help you message friends and family on WhatsApp, allow WhatsApp access to your contacts. Tap Settings > Permissions, and turn Contacts on.';
+
