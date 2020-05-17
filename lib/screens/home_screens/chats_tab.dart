@@ -1,3 +1,4 @@
+import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/strings.dart';
@@ -6,10 +7,9 @@ class ChatTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool contactPermissionGranted = true;
-
     return Scaffold(
       body: contactPermissionGranted
-          ? buildChatList(context)
+          ? buildList(context)
           : buildPermissionRequest(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -18,7 +18,7 @@ class ChatTab extends StatelessWidget {
     );
   }
 
-  buildChatList(BuildContext context) {
+  buildList(BuildContext context) {
     var list = List.generate(100, (index) {
       return index;
     });
@@ -26,90 +26,78 @@ class ChatTab extends StatelessWidget {
     return ListView.builder(
       itemCount: list.length,
       itemBuilder: (BuildContext ctx, int index) {
-        return Padding(
-          padding: EdgeInsets.only(left: 16, bottom: 10, right: 5, top: 10),
-          child: Row(
-            children: <Widget>[
-              buildChatAvatar(),
-              buildChatDetails(),
-              buildChatTimeAndCount(context),
-            ],
-          ),
+        return ListTile(
+          leading: buildLeading(context),
+          title: buildTitle(),
+          subtitle: buildSubtitle(context),
+          trailing: buildTrailing(context),
         );
       },
     );
   }
 
-  Container buildChatTimeAndCount(BuildContext context) {
-    return Container(
-      height: 40,
-      child: Padding(
-        padding: const EdgeInsets.only(left: 15, right: 10),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          mainAxisSize: MainAxisSize.max,
-          children: <Widget>[
-            Text(
-              '1:22 PM',
-              style: TextStyle(
-                  fontWeight: FontWeight.w400,
-                  color: fainterTextColor,
-                  fontSize: 12),
-            ),
-            CircleAvatar(
-              radius: 10,
-              backgroundColor: Theme.of(context).accentColor,
-              child: Center(
-                child: Text(
-                  '2',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10,
-                      fontWeight: FontWeight.w500),
-                ),
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+   buildLeading(BuildContext context) {
+    return faker.randomGenerator.boolean()
+        ? CircleAvatar(
+            child: Icon(Icons.person, color: Colors.white, size: 40),
+            radius: 25,
+            backgroundColor: avatarBgColor,
+          )
+        : CircleAvatar(
+            child: Icon(Icons.person,
+                color: Theme.of(context).accentColor, size: 40),
+            radius: 25,
+            backgroundColor: avatarBgColor,
+          );
   }
 
-  Expanded buildChatDetails() {
-    return Expanded(
-      child: Container(
-        height: 40,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 15, right: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              buildChatName(),
-              buildChatSnippet(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 
-  Text buildChatSnippet() => Text('..');
-
-  Text buildChatName() {
+   buildTitle() {
     return Text(
-      'Isaac Larbi',
+      faker.person.firstName() + " " + faker.person.lastName(),
       style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
     );
   }
 
-  CircleAvatar buildChatAvatar() {
-    return CircleAvatar(
-      child: Icon(Icons.person, color: Colors.white, size: 40),
-      radius: 25,
-      backgroundColor: avatarBgColor,
+  buildSubtitle(BuildContext context) {
+    return Text(
+      faker.lorem.sentence(),
+      overflow: TextOverflow.ellipsis,
+      style: TextStyle(color: Colors.black.withOpacity(0.5)),
+    );
+  }
+
+ 
+   buildTrailing(BuildContext context) {
+    return Container(
+      height: 40,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Text(
+            '1:22 PM',
+            style: TextStyle(
+                fontWeight: FontWeight.w400,
+                color: fainterTextColor,
+                fontSize: 12),
+          ),
+          CircleAvatar(
+            radius: 10,
+            backgroundColor: Theme.of(context).accentColor,
+            child: Center(
+              child: Text(
+                faker.randomGenerator.integer(15).toString(),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 
