@@ -12,8 +12,8 @@ class ChatTab extends StatelessWidget {
           ? buildChatList(context)
           : buildPermissionRequest(context),
       floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        child: Icon(Icons.message),
+        onPressed: () {},
+        child: Icon(Icons.message, color: Colors.white),
       ),
     );
   }

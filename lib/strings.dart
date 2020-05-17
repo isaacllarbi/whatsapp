@@ -46,6 +46,13 @@ const String exit_text='Exit';
 //chats_screen.dart
 const String to_help_you_message_friends='To help you message friends and family on WhatsApp, allow WhatsApp access to your contacts. Tap Settings > Permissions, and turn Contacts on.';
 
+//status_tab.dart
+const String tap_to_add_status_text = 'Tap to add status update';
+const String my_status_text = 'My status';
+const String muted_updates_text='Muted updates';
+const String recent_updates_text='Recent updates';
+const String viewed_updates_text='Viewed updates';
+
 //settings_screen.dart
 const String bio_text = 'Hey there! I am using WhatsApp.';
 const String account_text = 'Account';
