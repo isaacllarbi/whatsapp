@@ -5,6 +5,8 @@ import 'package:whatsapp/colors.dart';
 
 class WelcomeScreen extends StatelessWidget {
   static final String id = 'welcomescreen';
+  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -14,12 +16,9 @@ class WelcomeScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.max,
             children: <Widget>[
               SizedBox(height: 50),
-              Text(
-                welcome,
-                style: TextStyle(fontSize: 24, color: pageHeadingColor),
-              ),
+              buildPageHeading(context),
               SizedBox(height: 70),
-              CircleAvatar(backgroundColor: Colors.green.shade200, radius: 130),
+              buildImage(),
               SizedBox(height: 80),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 32.0),
@@ -31,22 +30,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 100),
-              SizedBox(
-                height: 40,
-                width: 300,
-                child: RaisedButton(
-                  color: btnBgColor,
-                  child: Text(
-                    agree_and_continue_btn_text,
-                    style: TextStyle(
-                        color: btnTextColor, fontWeight: FontWeight.bold),
-                  ),
-                  onPressed: () {
-                    Navigator.of(context).
-                        pushNamed(PhoneNumberScreen.id);
-                  },
-                ),
-              ),
+              buildContinueButton(context),
               SizedBox(height: 50),
               Text(
                 whatsapp_from_fb_text,
@@ -55,6 +39,36 @@ class WelcomeScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  SizedBox buildContinueButton(BuildContext context) {
+    return SizedBox(
+      height: 40,
+      width: 300,
+      child: RaisedButton(
+        child: Text(
+          agree_and_continue_btn_text,
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ),
+        onPressed: () {
+          Navigator.of(context).pushNamed(PhoneNumberScreen.id);
+        },
+      ),
+    );
+  }
+
+  CircleAvatar buildImage() =>
+      CircleAvatar(backgroundColor: Colors.green.shade200, radius: 130);
+
+  Text buildPageHeading(BuildContext context) {
+    return Text(
+      welcome,
+      style: TextStyle(
+        fontSize: 28,
+        color: Theme.of(context).primaryColorDark,
+        fontWeight: FontWeight.w400,
       ),
     );
   }

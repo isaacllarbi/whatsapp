@@ -2,20 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/strings.dart';
 
-class ChatScreen extends StatelessWidget {
+class ChatTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool contactPermissionGranted = true;
 
     return Scaffold(
-      body:
-          contactPermissionGranted ? buildChatList() : buildPermissionRequest(),
-      floatingActionButton:
-          FloatingActionButton(onPressed: null, child: Icon(Icons.message)),
+      body: contactPermissionGranted
+          ? buildChatList(context)
+          : buildPermissionRequest(context),
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        child: Icon(Icons.message),
+      ),
     );
   }
 
-  buildChatList() {
+  buildChatList(BuildContext context) {
     var list = List.generate(100, (index) {
       return index;
     });
@@ -29,7 +32,7 @@ class ChatScreen extends StatelessWidget {
             children: <Widget>[
               buildChatAvatar(),
               buildChatDetails(),
-              buildChatTimeAndCount(),
+              buildChatTimeAndCount(context),
             ],
           ),
         );
@@ -37,7 +40,7 @@ class ChatScreen extends StatelessWidget {
     );
   }
 
-  Container buildChatTimeAndCount() {
+  Container buildChatTimeAndCount(BuildContext context) {
     return Container(
       height: 40,
       child: Padding(
@@ -56,7 +59,7 @@ class ChatScreen extends StatelessWidget {
             ),
             CircleAvatar(
               radius: 10,
-              backgroundColor: btnBgColor,
+              backgroundColor: Theme.of(context).accentColor,
               child: Center(
                 child: Text(
                   '2',
@@ -104,13 +107,13 @@ class ChatScreen extends StatelessWidget {
 
   CircleAvatar buildChatAvatar() {
     return CircleAvatar(
-      child: Icon(Icons.person, color: iconWhiteColor, size: 40),
+      child: Icon(Icons.person, color: Colors.white, size: 40),
       radius: 25,
       backgroundColor: avatarBgColor,
     );
   }
 
-  buildPermissionRequest() {
+  buildPermissionRequest(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
         mainAxisSize: MainAxisSize.max,
@@ -120,7 +123,7 @@ class ChatScreen extends StatelessWidget {
           SizedBox(height: 65),
           Center(
             child: CircleAvatar(
-              backgroundColor: pageHeadingColor,
+              backgroundColor: Theme.of(context).primaryColor,
               radius: 100,
               child: Icon(
                 Icons.contacts,
@@ -140,11 +143,11 @@ class ChatScreen extends StatelessWidget {
           ),
           SizedBox(height: 45),
           RaisedButton(
-            color: btnBgColor,
+            color: Theme.of(context).accentColor,
             child: Text(
-              settings_text_caps,
+              settings_text.toUpperCase(),
               style:
-                  TextStyle(fontWeight: FontWeight.bold, color: btnTextColor),
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
             ),
             onPressed: () {
               //TODO implement onpressed

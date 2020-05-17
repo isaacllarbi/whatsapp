@@ -17,7 +17,7 @@ class VerifyNumberScreen extends StatelessWidget {
         title: Center(
           child: Text(
             verify_text,
-            style: TextStyle(color: appBarTitleColor),
+            style: TextStyle(color: Theme.of(context).primaryColorDark),
           ),
         ),
         actions: <Widget>[
@@ -89,7 +89,7 @@ class VerifyNumberScreen extends StatelessWidget {
           SizedBox(height: 20),
           Center(
             child: RaisedButton(
-              child: Text('NEXT'),
+              child: Text(next.toUpperCase(),),
               onPressed: () =>
                   Navigator.of(context).pushNamed(ProfileScreen.id),
             ),

@@ -16,7 +16,7 @@ class ProfileScreen extends StatelessWidget {
         title: Center(
           child: Text(
             profile_info_text,
-            style: TextStyle(color: appBarTitleColor),
+            style: TextStyle(color: Theme.of(context).primaryColorDark),
           ),
         ),
       ),
@@ -66,11 +66,10 @@ class ProfileScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(bottom: 10, top: 120),
               child: RaisedButton(
-                color: btnBgColor,
                 child: Text(
-                  next,
+                  next.toUpperCase(),
                   style: TextStyle(
-                      fontWeight: FontWeight.bold, color: btnTextColor),
+                      fontWeight: FontWeight.bold, color: Colors.white),
                 ),
                 onPressed: () {
                   //implement onpressed
@@ -96,7 +95,7 @@ Widget buildGDrivePermissionDialog(context) {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Container(
-          color: btnTextPimaryColor,
+          color: Theme.of(context).accentColor,
           height: 140,
           child: Center(
             child: Icon(
@@ -117,7 +116,7 @@ Widget buildGDrivePermissionDialog(context) {
             FlatButton(
               // color: btnBgColor,
               child:
-                  Text('NOT NOW', style: TextStyle(color: btnTextPimaryColor)),
+                  Text('NOT NOW', style: TextStyle(color: Theme.of(context).accentColor)),
               onPressed: () {
                 //TODO close dialog and navigate to next screen
                 Navigator.of(context).pop();
@@ -126,7 +125,7 @@ Widget buildGDrivePermissionDialog(context) {
             FlatButton(
               // color: btnBgColor,
               child:
-                  Text('CONTINUE', style: TextStyle(color: btnTextPimaryColor)),
+                  Text('CONTINUE', style: TextStyle(color: Theme.of(context).accentColor)),
               onPressed: () {
                 //TODO request permission to access sms
                 Navigator.of(context).pop();

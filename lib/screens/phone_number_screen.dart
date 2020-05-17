@@ -16,7 +16,7 @@ class PhoneNumberScreen extends StatelessWidget {
         title: Center(
           child: Text(
             enter_number_text,
-            style: TextStyle(color: appBarTitleColor),
+            style: TextStyle(color: Theme.of(context).primaryColorDark),
           ),
         ),
         actions: <Widget>[
@@ -95,11 +95,10 @@ class PhoneNumberScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: RaisedButton(
-              color: btnBgColor,
               child: Text(
-                next,
+                next.toUpperCase(),
                 style:
-                    TextStyle(fontWeight: FontWeight.bold, color: btnTextColor),
+                    TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
               onPressed: () {
                 //implement onpressed
@@ -133,13 +132,11 @@ Widget buildDialog1(context) {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             RaisedButton(
-              color: btnBgColor,
-              child: Text('EDIT', style: TextStyle(color: btnTextColor)),
+              child: Text('EDIT', style: TextStyle(color: Colors.white)),
               onPressed: () {},
             ),
             RaisedButton(
-              color: btnBgColor,
-              child: Text('OK', style: TextStyle(color: btnTextColor)),
+              child: Text('OK', style: TextStyle(color: Colors.white)),
               onPressed: () {
                 Navigator.of(context).pushNamed(VerifyNumberScreen.id);
               },
@@ -151,14 +148,14 @@ Widget buildDialog1(context) {
   );
 }
 
-Widget buildDialog2() {
+Widget buildDialog2(BuildContext context) {
   return AlertDialog(
     contentPadding: EdgeInsets.all(0),
     content: Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Container(
-          color: btnTextPimaryColor,
+          color: Theme.of(context).primaryColor,
           height: 140,
           child: Center(
             child: Icon(
@@ -179,7 +176,7 @@ Widget buildDialog2() {
             FlatButton(
               // color: btnBgColor,
               child:
-                  Text('NOT NOW', style: TextStyle(color: btnTextPimaryColor)),
+                  Text('NOT NOW', style: TextStyle(color:  Theme.of(context).primaryColor)),
               onPressed: () {
                 //TODO close dialog and navigate to next screen
               },
@@ -187,7 +184,7 @@ Widget buildDialog2() {
             FlatButton(
               // color: btnBgColor,
               child:
-                  Text('CONTINUE', style: TextStyle(color: btnTextPimaryColor)),
+                  Text('CONTINUE', style: TextStyle(color:  Theme.of(context).primaryColor)),
               onPressed: () {
                 //request permission to access sms
               },
