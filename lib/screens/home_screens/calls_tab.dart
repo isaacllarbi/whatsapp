@@ -6,30 +6,28 @@ import 'package:whatsapp/strings.dart';
 class CallsTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var list = List.generate(100, (index) {
+      return index;
+    });
     return Scaffold(
-      body: buildList(context),
+      body: ListView.builder(
+        itemCount: list.length,
+        itemBuilder: (BuildContext ctx, int index) {
+          return ListTile(
+            onTap: () {
+              print('call clicked');
+            },
+            leading: buildLeading(),
+            title: buildTitle(),
+            subtitle: buildSubtitle(context),
+            trailing: buildTrailing(context),
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add_call, color: Colors.white),
       ),
-    );
-  }
-
-  buildList(BuildContext context) {
-    var list = List.generate(100, (index) {
-      return index;
-    });
-
-    return ListView.builder(
-      itemCount: list.length,
-      itemBuilder: (BuildContext ctx, int index) {
-        return ListTile(
-          leading: buildLeading(),
-          title: buildTitle(),
-          subtitle: buildSubtitle(context),
-          trailing: buildTrailing(context),
-        );
-      },
     );
   }
 

@@ -16,7 +16,6 @@ class SettingsScreen extends StatelessWidget {
           children: <Widget>[
             buildUserInfo(),
             Divider(height: 3),
-            SizedBox(height: 20),
             buildSettingItem(
               context,
               Icons.vpn_key,
@@ -75,89 +74,35 @@ class SettingsScreen extends StatelessWidget {
     );
   }
 
-  buildSettingItem(
-    BuildContext context,
-    IconData iconData,
-    String title,
-    String desc,
-  ) {
-    return Padding(
-      padding: EdgeInsets.only(left: 16, bottom: 10, right: 5, top: 10),
-      child: Row(
-        children: <Widget>[
-          Icon(iconData, color: Theme.of(context).primaryColor, size: 22),
-          Expanded(
-            child: Container(
-              height: 40,
-              child: Padding(
-                padding: EdgeInsets.only(left: 15, right: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Text(
-                      title.isNotEmpty ? title : '',
-                      style:
-                          TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
-                    ),
-                    desc.isNotEmpty ? Text(desc) : SizedBox.shrink(),
-                  ],
-                ),
-              ),
-            ),
-          )
-        ],
-      ),
-    );
-  }
-
   buildUserInfo() {
-    return Padding(
-      padding: EdgeInsets.only(left: 16, bottom: 10, right: 5, top: 10),
-      child: Row(
-        children: <Widget>[
-          buildAvatar(),
-          buildDetails(),
-        ],
+    return ListTile(
+      onTap: () {
+        print('user tapped');
+      },
+      leading: CircleAvatar(
+        child: Icon(Icons.person, color: Colors.white, size: 40),
+        radius: 25,
+        backgroundColor: avatarBgColor,
       ),
-    );
-  }
-
-  CircleAvatar buildAvatar() {
-    return CircleAvatar(
-      child: Icon(Icons.person, color: Colors.white, size: 40),
-      radius: 25,
-      backgroundColor: avatarBgColor,
-    );
-  }
-
-  Expanded buildDetails() {
-    return Expanded(
-      child: Container(
-        height: 40,
-        child: Padding(
-          padding: EdgeInsets.only(left: 15, right: 10),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              buildName(),
-              buildBio(),
-            ],
-          ),
-        ),
+      title: Text(
+        'Isaac Larbi',
+        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
       ),
+      subtitle: Text(hey_there_i_am_text),
     );
   }
 
-  Text buildName() {
-    return Text(
-      'Isaac Larbi',
-      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+  buildSettingItem(BuildContext ctx, IconData icon, String title, String desc) {
+    return ListTile(
+      onTap: () {
+        print('setting item clicked');
+      },
+      leading: Icon(icon, color: Theme.of(ctx).primaryColor, size: 22),
+      title: Text(
+        title.isNotEmpty ? title : '',
+        style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+      ),
+      subtitle: desc.isNotEmpty ? Text(desc) : SizedBox.shrink(),
     );
   }
-
-  Text buildBio() => Text('..');
 }

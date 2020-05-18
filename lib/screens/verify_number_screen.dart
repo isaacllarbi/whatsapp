@@ -7,6 +7,7 @@ import 'package:whatsapp/colors.dart';
 
 class VerifyNumberScreen extends StatelessWidget {
   static final String id = 'verifynumberscreen';
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -41,6 +41,7 @@ const String new_group_text='New group';
 const String new_broadcast_text='New broadcast';
 const String whatsapp_web_text='WhatsApp Web';
 const String settings_text='Settings';
+const String starred_messages_text = 'Starred messages';
 const String exit_text='Exit';
 
 //chats_screen.dart
@@ -54,7 +55,7 @@ const String recent_updates_text='Recent updates';
 const String viewed_updates_text='Viewed updates';
 
 //settings_screen.dart
-const String bio_text = 'Hey there! I am using WhatsApp.';
+const String hey_there_i_am_text = 'Hey there! I am using WhatsApp.';
 const String account_text = 'Account';
 const String privacy_text='Privacy';
 const String security_text='Security';
@@ -77,3 +78,5 @@ const String contact_us_text='Contact us';
 const String privacy_policy_text='Privacy Policy';
 const String invite_text='Invite a friend';
 
+//new_group_screen.dart
+const String add_participants_text = 'Add participants';

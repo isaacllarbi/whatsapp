@@ -4,6 +4,7 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:whatsapp/screens/home_screens/calls_tab.dart';
 import 'package:whatsapp/screens/home_screens/chats_tab.dart';
 import 'package:whatsapp/screens/home_screens/status_tab.dart';
+import 'package:whatsapp/screens/new_group_screen.dart';
 import 'package:whatsapp/screens/settings_screen.dart';
 import 'package:whatsapp/screens/welcome_screen.dart';
 import 'package:whatsapp/strings.dart';
@@ -46,7 +47,7 @@ class HomeScreen extends StatelessWidget {
     // );
 
     return DefaultTabController(
-      initialIndex: 2,
+      initialIndex: 1,
       length: 4,
       child: Scaffold(
         appBar: buildAppBar(context),
@@ -90,14 +91,13 @@ class HomeScreen extends StatelessWidget {
       ),
       PopupMenuButton(
         onSelected: (title) {
-          if (title == message_a_number_text) {
-            // Fluttertoast.showToast(msg: 'Navigation not implemented');
-            //TODO implement navigation
-          } else if (title == new_group_text) {
-            //TODO implement navigation
+          if (title == new_group_text) {
+            Navigator.of(context).pushNamed(NewGroupScreen.id);
           } else if (title == new_broadcast_text) {
             //TODO implement navigation
           } else if (title == whatsapp_web_text) {
+            //TODO implement navigation
+          } else if (title == starred_messages_text) {
             //TODO implement navigation
           } else if (title == settings_text) {
             //TODO implement navigation
@@ -114,10 +114,10 @@ class HomeScreen extends StatelessWidget {
         ),
         itemBuilder: (BuildContext context) {
           return [
-            message_a_number_text,
             new_group_text,
             new_broadcast_text,
             whatsapp_web_text,
+            starred_messages_text,
             settings_text,
             exit_text
           ]

@@ -10,27 +10,21 @@ class StatusTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {}, 
+        onPressed: () {},
         child: Icon(FontAwesome.camera, color: Colors.white),
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: CustomScrollView(
-              slivers: <Widget>[
-                buildMyStatusTile(context),
-                buildRecentStatus(context),
-                buildViewedStatus(context),
-                buildMutedStatus(context),
-              ],
-            ),
-          )
+      body: CustomScrollView(
+        slivers: <Widget>[
+          buildMyStatusTile(context),
+          buildRecentStatus(context),
+          buildViewedStatus(context),
+          buildMutedStatus(context),
         ],
       ),
     );
   }
 
-  SliverStickyHeader buildMyStatusTile(BuildContext context) {
+  buildMyStatusTile(BuildContext context) {
     return SliverStickyHeader(
       sticky: false,
       header: SizedBox.shrink(),
@@ -47,6 +41,9 @@ class StatusTab extends StatelessWidget {
 
   buildAddStatus(BuildContext context) {
     return ListTile(
+      onTap: () {
+        print('my status tile');
+      },
       leading: Stack(
         children: <Widget>[
           CircleAvatar(
@@ -131,40 +128,22 @@ class StatusTab extends StatelessWidget {
   }
 
   buildStatusItem(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(left: 16, bottom: 10, right: 5, top: 10),
-      child: Row(
-        children: <Widget>[
-          CircleAvatar(
-            child: Icon(Icons.person, color: Colors.white, size: 40),
-            radius: 25,
-            backgroundColor: avatarBgColor,
-          ),
-          Expanded(
-            child: Container(
-              height: 45,
-              child: Padding(
-                padding: const EdgeInsets.only(left: 15, right: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  mainAxisSize: MainAxisSize.max,
-                  children: <Widget>[
-                    Text(
-                      faker.person.firstName() + ' ' + faker.person.lastName(),
-                      style:
-                          TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-                    ),
-                    Text(
-                      'Today at, ' + faker.date.time().toString(),
-                      style: TextStyle(color: Colors.black.withOpacity(0.5)),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
+    return ListTile(
+      onTap: () {
+        print('status item clicked');
+      },
+      leading: CircleAvatar(
+        child: Icon(Icons.person, color: Colors.white, size: 40),
+        radius: 25,
+        backgroundColor: avatarBgColor,
+      ),
+      title: Text(
+        faker.person.firstName() + ' ' + faker.person.lastName(),
+        style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+      ),
+      subtitle: Text(
+        'Today at, ' + faker.date.time().toString(),
+        style: TextStyle(color: Colors.black.withOpacity(0.5)),
       ),
     );
   }

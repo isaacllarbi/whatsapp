@@ -5,12 +5,26 @@ import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/strings.dart';
 
 class ChatTab extends StatelessWidget {
+  final list = List.generate(100, (index) => index);
   @override
   Widget build(BuildContext context) {
     final bool contactPermissionGranted = true;
     return Scaffold(
       body: contactPermissionGranted
-          ? buildList(context)
+          ? ListView.builder(
+              itemCount: list.length,
+              itemBuilder: (BuildContext ctx, int index) {
+                return ListTile(
+                  onTap: () {
+                    print('chats clicked');
+                  },
+                  leading: buildLeading(context),
+                  title: buildTitle(),
+                  subtitle: buildSubtitle(context),
+                  trailing: buildTrailing(context),
+                );
+              },
+            )
           : buildPermissionRequest(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
@@ -19,25 +33,7 @@ class ChatTab extends StatelessWidget {
     );
   }
 
-  buildList(BuildContext context) {
-    var list = List.generate(100, (index) {
-      return index;
-    });
-
-    return ListView.builder(
-      itemCount: list.length,
-      itemBuilder: (BuildContext ctx, int index) {
-        return ListTile(
-          leading: buildLeading(context),
-          title: buildTitle(),
-          subtitle: buildSubtitle(context),
-          trailing: buildTrailing(context),
-        );
-      },
-    );
-  }
-
-   buildLeading(BuildContext context) {
+  buildLeading(BuildContext context) {
     return faker.randomGenerator.boolean()
         ? CircleAvatar(
             child: Icon(Icons.person, color: Colors.white, size: 40),
@@ -52,8 +48,7 @@ class ChatTab extends StatelessWidget {
           );
   }
 
-
-   buildTitle() {
+  buildTitle() {
     return Text(
       faker.person.firstName() + " " + faker.person.lastName(),
       style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
@@ -68,37 +63,33 @@ class ChatTab extends StatelessWidget {
     );
   }
 
- 
-   buildTrailing(BuildContext context) {
-    return Container(
-      height: 40,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        mainAxisSize: MainAxisSize.max,
-        children: <Widget>[
-          Text(
-            '1:22 PM',
-            style: TextStyle(
-                fontWeight: FontWeight.w400,
-                color: fainterTextColor,
-                fontSize: 12),
-          ),
-          CircleAvatar(
-            radius: 10,
-            backgroundColor: Theme.of(context).accentColor,
-            child: Center(
-              child: Text(
-                faker.randomGenerator.integer(15).toString(),
-                style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
-                    fontWeight: FontWeight.w500),
-              ),
+  buildTrailing(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        Text(
+          '1:22 PM',
+          style: TextStyle(
+              fontWeight: FontWeight.w400,
+              color: fainterTextColor,
+              fontSize: 12),
+        ),SizedBox(height: 10),
+        CircleAvatar(
+          radius: 10,
+          backgroundColor: Theme.of(context).accentColor,
+          child: Center(
+            child: Text(
+              faker.randomGenerator.integer(15).toString(),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w500),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 

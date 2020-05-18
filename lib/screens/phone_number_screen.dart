@@ -65,6 +65,7 @@ class PhoneNumberScreen extends StatelessWidget {
                           width: 85,
                           child: TextFormField(
                             initialValue: "233",
+                            keyboardType: TextInputType.number,
                             decoration:
                                 InputDecoration(prefixIcon: Icon(Icons.add)),
                           ),
@@ -78,6 +79,7 @@ class PhoneNumberScreen extends StatelessWidget {
                       child: SizedBox(
                         width: 200,
                         child: TextFormField(
+                          keyboardType: TextInputType.number,
                           decoration: InputDecoration(hintText: phone_number),
                         ),
                       ),
@@ -175,16 +177,16 @@ Widget buildDialog2(BuildContext context) {
           children: <Widget>[
             FlatButton(
               // color: btnBgColor,
-              child:
-                  Text('NOT NOW', style: TextStyle(color:  Theme.of(context).primaryColor)),
+              child: Text('NOT NOW',
+                  style: TextStyle(color: Theme.of(context).primaryColor)),
               onPressed: () {
                 //TODO close dialog and navigate to next screen
               },
             ),
             FlatButton(
               // color: btnBgColor,
-              child:
-                  Text('CONTINUE', style: TextStyle(color:  Theme.of(context).primaryColor)),
+              child: Text('CONTINUE',
+                  style: TextStyle(color: Theme.of(context).primaryColor)),
               onPressed: () {
                 //request permission to access sms
               },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/screens/home_screen.dart';
+import 'package:whatsapp/screens/new_group_screen.dart';
 import 'package:whatsapp/screens/phone_number_screen.dart';
 import 'package:whatsapp/screens/profile_screen.dart';
 import 'package:whatsapp/screens/verify_number_screen.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
         PhoneNumberScreen.id: (context) => PhoneNumberScreen(),
         ProfileScreen.id: (context) => ProfileScreen(),
         HomeScreen.id: (context) => HomeScreen(),
+        NewGroupScreen.id:(context) => NewGroupScreen(),
       },
       debugShowCheckedModeBanner: false,
     );
