@@ -1,5 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/strings.dart';
@@ -9,8 +10,8 @@ class StatusTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        child: Icon(Icons.camera, color: Colors.white),
+        onPressed: () {}, 
+        child: Icon(FontAwesome.camera, color: Colors.white),
       ),
       body: Column(
         children: <Widget>[

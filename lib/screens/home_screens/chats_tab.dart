@@ -1,5 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:whatsapp/strings.dart';
 
@@ -13,7 +14,7 @@ class ChatTab extends StatelessWidget {
           : buildPermissionRequest(context),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.message, color: Colors.white),
+        child: Icon(MaterialCommunityIcons.message, color: Colors.white),
       ),
     );
   }

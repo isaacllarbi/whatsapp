@@ -32,6 +32,7 @@ class MyApp extends StatelessWidget {
         ProfileScreen.id: (context) => ProfileScreen(),
         HomeScreen.id: (context) => HomeScreen(),
       },
+      debugShowCheckedModeBanner: false,
     );
   }
 }

@@ -11,32 +11,34 @@ class WelcomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: <Widget>[
-              SizedBox(height: 50),
-              buildPageHeading(context),
-              SizedBox(height: 70),
-              buildImage(),
-              SizedBox(height: 80),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 32.0),
-                child: Center(
-                  child: Text(
-                    tos,
-                    style: TextStyle(fontSize: 14, color: faintTextColor),
+        child: SingleChildScrollView(
+                  child: Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                SizedBox(height: 50),
+                buildPageHeading(context),
+                SizedBox(height: 70),
+                buildImage(),
+                SizedBox(height: 80),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 32.0),
+                  child: Center(
+                    child: Text(
+                      tos,
+                      style: TextStyle(fontSize: 14, color: faintTextColor),
+                    ),
                   ),
                 ),
-              ),
-              SizedBox(height: 100),
-              buildContinueButton(context),
-              SizedBox(height: 50),
-              Text(
-                whatsapp_from_fb_text,
-                style: TextStyle(fontSize: 12, color: fainterTextColor),
-              )
-            ],
+                SizedBox(height: 100),
+                buildContinueButton(context),
+                SizedBox(height: 50),
+                Text(
+                  whatsapp_from_fb_text,
+                  style: TextStyle(fontSize: 12, color: fainterTextColor),
+                )
+              ],
+            ),
           ),
         ),
       ),
