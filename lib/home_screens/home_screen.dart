@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:whatsapp/screens/home_screens/calls_tab.dart';
-import 'package:whatsapp/screens/home_screens/chats_tab.dart';
-import 'package:whatsapp/screens/home_screens/status_tab.dart';
-import 'package:whatsapp/screens/new_group_screen.dart';
-import 'package:whatsapp/screens/settings_screen.dart';
-import 'package:whatsapp/screens/welcome_screen.dart';
+import 'package:whatsapp/home_screens/calls_tab.dart';
+import 'package:whatsapp/home_screens/chats_tab.dart';
+import 'package:whatsapp/home_screens/starredmessages_screen.dart';
+import 'package:whatsapp/home_screens/status_tab.dart';
+import 'package:whatsapp/home_screens/new_broadcast_screen.dart';
+import 'package:whatsapp/home_screens/new_group_screen.dart';
+import 'package:whatsapp/home_screens/settings_screen.dart';
+import 'package:whatsapp/home_screens/whatsappweb_screen.dart';
+import 'package:whatsapp/setup_screens/welcome_screen.dart';
 import 'package:whatsapp/strings.dart';
 import 'package:whatsapp/colors.dart';
 
@@ -92,18 +95,25 @@ class HomeScreen extends StatelessWidget {
       PopupMenuButton(
         onSelected: (title) {
           if (title == new_group_text) {
-            Navigator.of(context).pushNamed(NewGroupScreen.id);
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => NewGroupScreen()),
+            );
           } else if (title == new_broadcast_text) {
-            //TODO implement navigation
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => NewBroadcastScreen()),
+            );
           } else if (title == whatsapp_web_text) {
-            //TODO implement navigation
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => WhatsappwebScreen()),
+            );
           } else if (title == starred_messages_text) {
-            //TODO implement navigation
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => StarredmessagesScreen()),
+            );
           } else if (title == settings_text) {
-            //TODO implement navigation
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (ctx) => SettingsScreen(),
-            ));
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (ctx) => SettingsScreen()),
+            );
           } else if (title == exit_text) {
             Navigator.of(context).pushNamed(WelcomeScreen.id);
           }
@@ -135,4 +145,5 @@ class HomeScreen extends StatelessWidget {
   buildMenuItem(String title, BuildContext context) {
     return Text(title);
   }
+
 }

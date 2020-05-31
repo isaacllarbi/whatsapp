@@ -1,19 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
-import 'package:whatsapp/screens/home_screen.dart';
-import 'package:whatsapp/screens/new_group_screen.dart';
-import 'package:whatsapp/screens/phone_number_screen.dart';
-import 'package:whatsapp/screens/profile_screen.dart';
-import 'package:whatsapp/screens/verify_number_screen.dart';
-import 'package:whatsapp/screens/welcome_screen.dart';
+import 'package:whatsapp/home_screens/home_screen.dart';
+import 'package:whatsapp/home_screens/new_group_screen.dart';
+import 'package:whatsapp/setup_screens/phone_number_screen.dart';
+import 'package:whatsapp/setup_screens/profile_screen.dart';
+import 'package:whatsapp/setup_screens/verify_number_screen.dart';
+import 'package:whatsapp/setup_screens/welcome_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
-  var primColor = Color.fromRGBO(18, 140, 126, 1);
-  var primColorDark = Color.fromRGBO(7, 94, 84, 1);
-  var accentColor = Color.fromRGBO(37, 211, 102, 1);
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +29,6 @@ class MyApp extends StatelessWidget {
         PhoneNumberScreen.id: (context) => PhoneNumberScreen(),
         ProfileScreen.id: (context) => ProfileScreen(),
         HomeScreen.id: (context) => HomeScreen(),
-        NewGroupScreen.id:(context) => NewGroupScreen(),
       },
       debugShowCheckedModeBanner: false,
     );

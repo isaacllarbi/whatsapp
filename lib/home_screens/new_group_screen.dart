@@ -20,7 +20,7 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
     };
   });
 
-   var selected = List.generate(10, (index) {
+  var selected = List.generate(10, (index) {
     return {
       "id": index,
       "name": faker.person.firstName() + ' ' + faker.person.lastName(),
@@ -35,6 +35,7 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
       body: CustomScrollView(
         slivers: [
           buildSelectedList(context),
+//          Divider(),
           buildContactList(context),
         ],
       ),
@@ -92,7 +93,10 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
                               radius: 25,
                               // child: Icon(Icons.person, color: Colors.white, size: 40),
                               child: Text(
-                                selected[i]['name'].toString().substring(0,1).toUpperCase(),
+                                selected[i]['name']
+                                    .toString()
+                                    .substring(0, 1)
+                                    .toUpperCase(),
                                 style: TextStyle(color: Colors.black),
                               ),
                               backgroundColor: avatarBgColor,
@@ -100,11 +104,19 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
                             Positioned(
                               right: 0,
                               bottom: 0,
-                              child: CircleAvatar(
-                                child: Icon(Icons.add,
-                                    color: Colors.white, size: 16),
-                                radius: 10,
-                                backgroundColor: Theme.of(context).accentColor,
+                              child: GestureDetector(
+                                onTap: () {
+                                  print('Removed');
+                                },
+                                child: CircleAvatar(
+                                  child: Icon(
+                                    Icons.cancel,
+                                    color: Colors.black.withOpacity(0.5),
+                                    size: 20,
+                                  ),
+                                  radius: 10,
+                                  backgroundColor: Colors.white,
+                                ),
                               ),
                             ),
                           ],
@@ -125,7 +137,13 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
   buildContactList(BuildContext context) {
     return SliverStickyHeader(
       sticky: false,
-      header: SizedBox.shrink(),
+      header: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+        child: SizedBox(
+          height: 1,
+          child: Divider(color: Colors.grey),
+        ),
+      ),
       sliver: SliverList(
         delegate: SliverChildBuilderDelegate(
           (BuildContext ctx, int i) {

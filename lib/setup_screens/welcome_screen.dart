@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:whatsapp/screens/phone_number_screen.dart';
+import 'package:whatsapp/setup_screens/phone_number_screen.dart';
 import 'package:whatsapp/strings.dart';
 import 'package:whatsapp/colors.dart';
 

@@ -2,6 +2,7 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:whatsapp/colors.dart';
+import 'package:whatsapp/home_screens/conversation_screen.dart';
 import 'package:whatsapp/strings.dart';
 
 class ChatTab extends StatelessWidget {
@@ -17,6 +18,9 @@ class ChatTab extends StatelessWidget {
                 return ListTile(
                   onTap: () {
                     print('chats clicked');
+                    Navigator.of(context).push(
+                      MaterialPageRoute(builder: (ctx) => ConversationScreen()),
+                    );
                   },
                   leading: buildLeading(context),
                   title: buildTitle(),

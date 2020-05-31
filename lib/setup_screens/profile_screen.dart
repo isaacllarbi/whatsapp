@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:whatsapp/screens/home_screen.dart';
+import 'package:whatsapp/home_screens/home_screen.dart';
 import 'package:whatsapp/strings.dart';
 import 'package:whatsapp/colors.dart';
 
