@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
-import 'package:whatsapp/home_screens/home_screen.dart';
-import 'package:whatsapp/home_screens/new_group_screen.dart';
-import 'package:whatsapp/setup_screens/phone_number_screen.dart';
-import 'package:whatsapp/setup_screens/profile_screen.dart';
-import 'package:whatsapp/setup_screens/verify_number_screen.dart';
-import 'package:whatsapp/setup_screens/welcome_screen.dart';
+
+import 'screens/home/home_screen.dart';
+import 'screens/phone_number/phone_number_screen.dart';
+import 'screens/profile/profile_screen.dart';
+import 'screens/verification/verify_number_screen.dart';
+import 'screens/welcome/welcome_screen.dart';
 
 void main() => runApp(MyApp());
 

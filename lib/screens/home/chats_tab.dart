@@ -2,7 +2,8 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:whatsapp/colors.dart';
-import 'package:whatsapp/home_screens/conversation_screen.dart';
+import 'package:whatsapp/screens/conversation/conversation_screen.dart';
+import 'package:whatsapp/screens/new_chat/new_chat_screen.dart';
 import 'package:whatsapp/strings.dart';
 
 class ChatTab extends StatelessWidget {
@@ -31,7 +32,9 @@ class ChatTab extends StatelessWidget {
             )
           : buildPermissionRequest(context),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () => Navigator.of(context).push(
+          MaterialPageRoute(builder: (ctx) => NewChatScreen()),
+        ),
         child: Icon(MaterialCommunityIcons.message, color: Colors.white),
       ),
     );
@@ -79,7 +82,8 @@ class ChatTab extends StatelessWidget {
               fontWeight: FontWeight.w400,
               color: fainterTextColor,
               fontSize: 12),
-        ),SizedBox(height: 10),
+        ),
+        SizedBox(height: 10),
         CircleAvatar(
           radius: 10,
           backgroundColor: Theme.of(context).accentColor,

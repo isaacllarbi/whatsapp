@@ -1,32 +1,35 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:whatsapp/components/action_button.dart';
 import 'package:whatsapp/strings.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:flutter/material.dart';
 
-class NewGroupScreen extends StatefulWidget {
+class NewBroadcastScreen extends StatefulWidget {
   static final String id = 'newgroupscreen';
 
   @override
-  _NewGroupScreenState createState() => _NewGroupScreenState();
+  _NewBroadcastScreenState createState() => _NewBroadcastScreenState();
 }
 
-class _NewGroupScreenState extends State<NewGroupScreen> {
-  var contacts = List.generate(100, (index) {
-    return {
+class _NewBroadcastScreenState extends State<NewBroadcastScreen> {
+  var contacts = List.generate(
+    100,
+    (index) => {
       "id": index,
       "name": faker.person.firstName() + ' ' + faker.person.lastName(),
       "time": faker.date.time().toString()
-    };
-  });
+    },
+  );
 
-  var selected = List.generate(10, (index) {
-    return {
+  var selected = List.generate(
+    10,
+    (index) => {
       "id": index,
       "name": faker.person.firstName() + ' ' + faker.person.lastName(),
       "time": faker.date.time().toString()
-    };
-  });
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +42,11 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
           buildContactList(context),
         ],
       ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.check,color: Colors.white,),
+        backgroundColor: Theme.of(context).accentColor,
+        onPressed: () {},
+      ),
     );
   }
 
@@ -46,17 +54,17 @@ class _NewGroupScreenState extends State<NewGroupScreen> {
     return AppBar(
       title: ListTile(
         title: Text(
-          new_group_text,
+          new_broadcast_text,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
         ),
         subtitle: Text(
-          add_participants_text,
+          "0 of 1024 selected",
           style: TextStyle(color: Colors.white),
         ),
       ),
       actions: [
-        IconButton(
-          icon: Icon(Icons.search, color: Colors.white),
+        ActionButton(
+          icon: Icons.search,
           onPressed: () {},
         )
       ],

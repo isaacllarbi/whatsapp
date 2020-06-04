@@ -1,39 +1,40 @@
 import 'package:faker/faker.dart';
 import 'package:flutter_sticky_header/flutter_sticky_header.dart';
+import 'package:whatsapp/components/action_button.dart';
 import 'package:whatsapp/strings.dart';
 import 'package:whatsapp/colors.dart';
 import 'package:flutter/material.dart';
 
-class NewBroadcastScreen extends StatefulWidget {
+import 'components/appbar.dart';
+
+class NewGroupScreen extends StatefulWidget {
   static final String id = 'newgroupscreen';
 
   @override
-  _NewBroadcastScreenState createState() => _NewBroadcastScreenState();
+  _NewGroupScreenState createState() => _NewGroupScreenState();
 }
 
-class _NewBroadcastScreenState extends State<NewBroadcastScreen> {
-  var contacts = List.generate(
-    100,
-    (index) => {
+class _NewGroupScreenState extends State<NewGroupScreen> {
+  var contacts = List.generate(100, (index) {
+    return {
       "id": index,
       "name": faker.person.firstName() + ' ' + faker.person.lastName(),
       "time": faker.date.time().toString()
-    },
-  );
+    };
+  });
 
-  var selected = List.generate(
-    10,
-    (index) => {
+  var selected = List.generate(10, (index) {
+    return {
       "id": index,
       "name": faker.person.firstName() + ' ' + faker.person.lastName(),
       "time": faker.date.time().toString()
-    },
-  );
+    };
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: newGroupAppbar(),
       body: CustomScrollView(
         slivers: [
           buildSelectedList(context),
@@ -41,34 +42,10 @@ class _NewBroadcastScreenState extends State<NewBroadcastScreen> {
           buildContactList(context),
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.check,color: Colors.white,),
-        backgroundColor: Theme.of(context).accentColor,
-        onPressed: () {},
-      ),
     );
   }
 
-  AppBar buildAppBar() {
-    return AppBar(
-      title: ListTile(
-        title: Text(
-          new_broadcast_text,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
-        ),
-        subtitle: Text(
-          "0 of 1024 selected",
-          style: TextStyle(color: Colors.white),
-        ),
-      ),
-      actions: [
-        IconButton(
-          icon: Icon(Icons.search, color: Colors.white),
-          onPressed: () {},
-        )
-      ],
-    );
-  }
+ 
 
   buildSelectedList(BuildContext context) {
     return SliverStickyHeader(

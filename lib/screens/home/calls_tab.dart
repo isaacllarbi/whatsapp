@@ -1,7 +1,6 @@
 import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
-import 'package:whatsapp/strings.dart';
 
 class CallsTab extends StatelessWidget {
   @override

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:whatsapp/setup_screens/verify_number_screen.dart';
+import 'package:whatsapp/screens/verification/verify_number_screen.dart';
 import 'package:whatsapp/strings.dart';
 import 'package:whatsapp/colors.dart';
 
