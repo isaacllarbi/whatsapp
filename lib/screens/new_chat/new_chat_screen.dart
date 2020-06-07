@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:whatsapp/colors.dart';
-import 'package:whatsapp/components/action_button.dart';
-
 import 'components/appbar.dart';
 
 class NewChatScreen extends StatelessWidget {
@@ -11,6 +9,4 @@ class NewChatScreen extends StatelessWidget {
       appBar: newChatAppbar(),
     );
   }
-
- 
 }
