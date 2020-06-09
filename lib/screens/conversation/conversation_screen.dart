@@ -4,24 +4,24 @@ import 'package:flutter/services.dart';
 import 'package:whatsapp/components/action_button.dart';
 import 'package:whatsapp/models/Chat.dart';
 import 'package:whatsapp/colors.dart';
+import 'package:grouped_list/grouped_list.dart';
 
 class ConversationScreen extends StatelessWidget {
   static final String id = 'conversation';
   List<dynamic> chats = [
-    {"id": '1', "msg": 'Hello', 'timestamp': '321'},
-    {"id": '1', "msg": 'Hello', 'timestamp': '325'},
-    {"id": 'me', "msg": 'Hi', 'timestamp': '400'},
-    {"id": 'me', "msg": 'How you doing', 'timestamp': '450'},
-    {"id": '1', "msg": 'cool', 'timestamp': '600'},
+    {"id": '1', "msg": 'Hello', 'date': 'monday'},
+    {"id": 'me', "msg": 'Hello', 'date': 'monday'},
+    {"id": 'me', "msg": 'How are you doing', 'date': 'tuesday'},
+    {"id": '1', "msg":"I'm cool", 'date': 'tuesday'},
   ];
 
-  List<Chat> chatsList = [
-    Chat(id: '1', message: "Hello", timestamp: '422'),
-    Chat(id: '1', message: "Hello", timestamp: '325'),
-    Chat(id: 'me', message: "Hello", timestamp: '400'),
-    Chat(id: 'me', message: "Hello", timestamp: '450'),
-    Chat(id: '1', message: "Hello", timestamp: '600'),
-  ];
+  // List<Chat> chatsList = [
+  //   Chat(id: '1', message: "Hello", timestamp: '422'),
+  //   Chat(id: '1', message: "Hello", timestamp: '325'),
+  //   Chat(id: 'me', message: "Hello", timestamp: '400'),
+  //   Chat(id: 'me', message: "Hello", timestamp: '450'),
+  //   Chat(id: '1', message: "Hello", timestamp: '600'),
+  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -30,9 +30,75 @@ class ConversationScreen extends StatelessWidget {
       appBar: buildAppBar(context),
       body: Column(
         children: [
-          buildChatUI(),
+          buildGroupedList(),
           buildBottomBar(context),
         ],
+      ),
+    );
+  }
+
+  buildGroupedList() {
+    return Expanded(
+      child: GroupedListView<dynamic, String>(
+        groupBy: (chat) => chat['date'],
+        elements: chats,
+        order: GroupedListOrder.ASC,
+        useStickyGroupSeparators: false,
+        groupSeparatorBuilder: (String value) {
+          return Center(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Container(
+                  padding: EdgeInsets.all(3),
+                  child: Text(
+                    value.toUpperCase(),
+                    style: TextStyle(fontSize: 12, fontWeight: FontWeight.w300),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade400,
+                    borderRadius: BorderRadius.horizontal(
+                      left: Radius.circular(5),
+                      right: Radius.circular(5),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          );
+        },
+        itemBuilder: (context, chat) {
+          return chat['id'] == 'me'
+              ? Container(
+                  margin: EdgeInsets.only(
+                      top: 4.0, bottom: 4.0, left: 120.0, right: 10),
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  padding: EdgeInsets.all(5),
+                  child: Text(
+                    chat['msg'].toString(),
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Colors.lightGreenAccent.shade100,
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  ),
+                )
+              : Container(
+                  margin: EdgeInsets.only(
+                      top: 4.0, bottom: 4.0, left: 10, right: 100),
+                  width: MediaQuery.of(context).size.width * 0.75,
+                  padding: EdgeInsets.all(5),
+                  child: Text(
+                    chat['msg'].toString(),
+                    style: TextStyle(fontSize: 16),
+                  ),
+                  decoration: BoxDecoration(
+                    color: Color(0xFFFFEFEE),
+                    borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  ),
+                );
+        },
       ),
     );
   }

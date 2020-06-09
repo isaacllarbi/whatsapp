@@ -56,17 +56,23 @@ class ChatTab extends StatelessWidget {
   }
 
   buildTitle() {
-    return Text(
-      faker.person.firstName() + " " + faker.person.lastName(),
-      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 5),
+      child: Text(
+        faker.person.firstName() + " " + faker.person.lastName(),
+        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+      ),
     );
   }
 
   buildSubtitle(BuildContext context) {
-    return Text(
-      faker.lorem.sentence(),
-      overflow: TextOverflow.ellipsis,
-      style: TextStyle(color: Colors.black.withOpacity(0.5)),
+    return Padding(
+            padding: const EdgeInsets.only(top: 5),
+child: Text(
+        faker.lorem.sentence(),
+        overflow: TextOverflow.ellipsis,
+        style: TextStyle(color: Colors.black.withOpacity(0.5)),
+      ),
     );
   }
 

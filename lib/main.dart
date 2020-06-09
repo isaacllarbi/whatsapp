@@ -11,18 +11,17 @@ import 'screens/welcome/welcome_screen.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'ITman',
+      title: 'Whatsapp',
       theme: ThemeData(
         primaryColor: primColor,
         primaryColorDark: primColorDark,
         accentColor: accentColor,
         buttonTheme: ButtonThemeData(buttonColor: accentColor),
-        fontFamily: GoogleFonts.lato().fontFamily,
+        // fontFamily: GoogleFonts,
       ),
       initialRoute: HomeScreen.id,
       routes: {

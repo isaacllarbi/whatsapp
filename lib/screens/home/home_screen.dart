@@ -101,7 +101,7 @@ class HomeScreen extends StatelessWidget {
             whatsapp_web_text,
             starred_messages_text,
             settings_text,
-            exit_text
+            exit_text,
           ]
               .map((title) => PopupMenuItem(
                     value: title,
