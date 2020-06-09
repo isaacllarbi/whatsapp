@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:whatsapp/colors.dart';
 
 import 'screens/home/home_screen.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         primaryColorDark: primColorDark,
         accentColor: accentColor,
         buttonTheme: ButtonThemeData(buttonColor: accentColor),
+        fontFamily: GoogleFonts.lato().fontFamily,
       ),
       initialRoute: HomeScreen.id,
       routes: {
