@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:whatsapp/components/action_button.dart';
+import 'package:whatsapp/screens/home/camera_tab.dart';
 import 'package:whatsapp/screens/new_broadcast/new_broadcast_screen.dart';
 import 'package:whatsapp/screens/new_group/new_group_screen.dart';
 import 'package:whatsapp/screens/settings/settings_screen.dart';
@@ -50,12 +51,12 @@ class HomeScreen extends StatelessWidget {
     // );
 
     return DefaultTabController(
-      initialIndex: 1,
+      initialIndex: 0,
       length: 4,
       child: Scaffold(
         appBar: buildAppBar(context),
         body: TabBarView(children: <Widget>[
-          Text('Camera'),
+          CameraTab(),
           ChatTab(),
           StatusTab(),
           CallsTab(),
