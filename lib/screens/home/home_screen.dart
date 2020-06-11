@@ -14,53 +14,29 @@ import 'calls_tab.dart';
 import 'chats_tab.dart';
 import 'status_tab.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   static final String id = 'homescreen';
+  @override
+  _HomeScreenState createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen>
+    with SingleTickerProviderStateMixin {
+  TabController controller;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = TabController(length: 4, vsync: this, initialIndex: 1);
+  }
 
   @override
   Widget build(BuildContext context) {
-    // return DefaultTabController(
-    //   initialIndex: 2,
-    //   length: 4,
-    //   child: Scaffold(
-    //     body: CustomScrollView(
-    //       slivers: <Widget>[
-    //         SliverAppBar(
-    //           backgroundColor: Color.fromRGBO(7, 94, 84, 1),
-    //           title: Text(
-    //             'WhatsApp',
-    //           ),
-    //           bottom: buildTabBar(),
-    //           actions: buildActions(context),
-    //         ),
-    //         SliverList(
-    //           delegate: SliverChildBuilderDelegate(
-    //             (BuildContext ctx, int i) {
-    //               return Column(children: <Widget>[
-    //                 ListTile(title: Text('hello')),
-    //                 ListTile(title: Text('hello')),
-    //                 ListTile(title: Text('hello'))
-    //               ],);
-    //             },
-    //             childCount: 5,
-    //           ),
-    //         )
-    //       ],
-    //     ),
-    //   ),
-    // );
-
-    return DefaultTabController(
-      initialIndex: 0,
-      length: 4,
-      child: Scaffold(
-        appBar: buildAppBar(context),
-        body: TabBarView(children: <Widget>[
-          CameraTab(),
-          ChatTab(),
-          StatusTab(),
-          CallsTab(),
-        ]),
+    return Scaffold(
+      appBar: buildAppBar(context),
+      body: TabBarView(
+        controller: controller,
+        children: [CameraTab(), ChatTab(), StatusTab(), CallsTab()],
       ),
     );
   }
@@ -78,6 +54,7 @@ class HomeScreen extends StatelessWidget {
 
   buildTabBar() {
     return TabBar(
+      controller: controller,
       tabs: <Widget>[
         Tab(child: Icon(Icons.camera_alt)),
         Tab(child: Text(chats_text.toUpperCase())),
